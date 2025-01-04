@@ -4,13 +4,13 @@
 
 ### Using Git and the bootstrap script
 
-Clone the repository in a location of choice (for instance in `~/Configuration/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
+Clone the repository in a location of choice (for instance in `~/Configuration/dotfiles`, with `~/dotfiles` as a symlink). The bootstrapper script will pull in the latest version and copy the files to the home folder.
 
 ```bash
 git clone https://github.com/sanderdewitte/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
-To update, `cd` into the local `dotfiles` repository, then:
+To update, `cd` into the local `dotfiles` git repository, then:
 
 ```bash
 source bootstrap.sh
@@ -22,9 +22,9 @@ Alternatively, to update while avoiding the confirmation prompt:
 set -- -f; source bootstrap.sh
 ```
 
-### Specify the `$PATH`
+### Updats the `$PATH`
 
-If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as detecting which version of `ls` is being used) takes place.
+If `~/.path` exists, it will be sourced along with the other files, before any feature testing takes place.
 
 Here’s an example `~/.path` file that adds `/usr/local/bin` to the `$PATH`:
 
@@ -34,7 +34,7 @@ export PATH="/usr/local/bin:$PATH"
 
 ### Define custom commands
 
-If `~/.extra` exists, it will be sourced along with the other files. It can be used to add custom commands that are not going to be committed to a public repository.
+If `~/.extra` exists, it will be sourced along with the other files. It can be used to add custom commands that are not supposed to be committed to a public repository.
 
 An exanple `~/.extra` fule looks like this:
 
