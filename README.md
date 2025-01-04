@@ -36,7 +36,7 @@ export PATH="/usr/local/bin:$PATH"
 
 If `~/.extra` exists, it will be sourced along with the other files. It can be used to add custom commands that are not supposed to be committed to a public repository.
 
-An exanple `~/.extra` fule looks like this:
+An example `~/.extra` file looks like this:
 
 ```bash
 # Git credentials
