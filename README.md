@@ -22,7 +22,7 @@ Alternatively, to update while avoiding the confirmation prompt:
 set -- -f; source bootstrap.sh
 ```
 
-### Updats the `$PATH`
+### Update the `$PATH`
 
 If `~/.path` exists, it will be sourced along with the other files, before any feature testing takes place.
 
