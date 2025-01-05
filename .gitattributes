@@ -1,2 +1,40 @@
-# Automatically normalize line endings for all text-based files
-* text=auto eol=crlf
+# Ensure consistent line endings for text-based files
+* text=auto
+
+# Treat certain file types as binary
+*.png binary
+*.jpg binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.xz binary
+*.7z binary
+*.iso binary
+
+# Set specific line-ending behavior for certain files
+*.sh text eol=lf
+*.csh text eol=lf
+*.py text eol=lf
+*.rb text eol=lf
+*.c text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.go text eol=lf
+*.java text eol=lf
+*.md text eol=lf
+*.markdown text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+
+# Exclude generated files from diff
+*.log -diff
+*.lock -diff
+*.min.js -diff
+*.min.css -diff
+
+# Preserve permissions for shell scripts
+*.sh eol=lf text executable
+*.csh eol=lf text executable
