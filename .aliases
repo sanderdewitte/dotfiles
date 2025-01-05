@@ -51,7 +51,7 @@ alias sudo='sudo '
 alias week='date +%V'
 
 # Get Debian package updates and Ruby gem updates
-alias update='sudo apt autoclean; sudo apt upate; sudo apt upgrade; sudo apt autoremove; sudo apt autoclean; sudo gem update --system; sudo gem update; sudo gem cleanup'
+alias update='sudo apt autoclean; sudo apt update; sudo apt upgrade; sudo apt autoremove; sudo apt autoclean; sudo gem update --system; sudo gem update; sudo gem cleanup'
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
