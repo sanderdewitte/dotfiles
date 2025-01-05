@@ -25,7 +25,7 @@ indent_size = 4
 [Makefile]
 indent_style = tab
 
-# 2 space indentation over for shell scripts
+# 2 space indentation for shell scripts
 [*.{sh,csh}]
 indent_style = space
 indent_size = 2
