@@ -6,7 +6,7 @@ root = true
 
 # Unix-style newlines with
 # a newline ending every file and
-# trim trailing whitrspace
+# trim trailing whitespace
 [*]
 end_of_line = lf
 insert_final_newline = true
