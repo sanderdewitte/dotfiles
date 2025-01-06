@@ -107,6 +107,7 @@ function gz() {
 # Show all the names (CNs and SANs) listed in the SSL certificate
 # for a given domain
 function getcertnames() {
+
   if [ -z "${1}" ]; then
     echo "ERROR: No domain specified.";
     return 1;
@@ -136,6 +137,7 @@ function getcertnames() {
     echo "ERROR: Certificate not found.";
     return 1;
   fi;
+
 }
 
 # Normalize `open` across Linux, macOS, and Windows.
@@ -189,4 +191,5 @@ add_to_path() {
       *) PATH="$x:$PATH";;
     esac
   done
+  unset x
 }
