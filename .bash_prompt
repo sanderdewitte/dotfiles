@@ -4,11 +4,12 @@
 # Screenshot: http://i.imgur.com/EkEtphC.png
 # Heavily inspired by @necolas’s prompt: https://github.com/necolas/dotfiles
 
-if [[ $COLORTERM == truecolor && $TERM == xterm ]] && infocmp xterm-direct >/dev/null 2>&1; then
+# Correct XTERM if needed
+if [[ $COLORTERM == truecolor && ($TERM == xterm || $TERM == *256color) ]] && infocmp xterm-direct >/dev/null 2>&1; then
     export TERM='xterm-direct'
 elif [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
     export TERM='gnome-256color'
-elif infocmp xterm-256color >/dev/null 2>&1; then
+elif [[ $TERM != xterm-direct && $TERM != gnome-256color && $TERM != xterm-256color ]] && infocmp xterm-256color >/dev/null 2>&1; then
     export TERM='xterm-256color'
 fi
 
