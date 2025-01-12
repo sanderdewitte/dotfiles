@@ -168,7 +168,8 @@ function tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-cleanpath() {
+# Function to remove duplicate entries from PATH
+function cleanpath() {
   if [ -n "$PATH" ]; then
     OLD_PATH=$PATH:; PATH=
     while [ -n "$OLD_PATH" ]; do
@@ -184,7 +185,8 @@ cleanpath() {
   fi
 }
 
-addpath() {
+# Function to prepend a path to PATH variable
+function addpath() {
   for x in $1; do
     case ":$PATH:" in
       *":$x:"*) :;;
