@@ -32,6 +32,13 @@ Here’s an example `~/.path` file that adds `/usr/local/bin` to the `$PATH`:
 export PATH="/usr/local/bin:$PATH"
 ```
 
+Alternatively, by using the `addpath` and `cleanpath` functions from `.functions` to make sure there are no duplicate entries
+
+```bash
+addpath "/usr/local/bin:$PATH"
+cleanpath 
+```
+
 ### Define custom commands
 
 If `~/.extra` exists, it will be sourced along with the other files. It can be used to add custom commands that are not supposed to be committed to a public repository.
