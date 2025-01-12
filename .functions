@@ -168,7 +168,7 @@ function tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-clean_path() {
+cleanpath() {
   if [ -n "$PATH" ]; then
     OLD_PATH=$PATH:; PATH=
     while [ -n "$OLD_PATH" ]; do
@@ -184,7 +184,7 @@ clean_path() {
   fi
 }
 
-add_to_path() {
+addpath() {
   for x in $1; do
     case ":$PATH:" in
       *":$x:"*) :;;
