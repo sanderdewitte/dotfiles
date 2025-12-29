@@ -30,10 +30,8 @@ set directory=~/.vim/swaps
 if exists("&undodir")
 	set undodir=~/.vim/undo
 endif
-
 " Don’t create backups when editing files in certain directories
-set backupskip=/tmp/*,/private/tmp/*
-
+set backupskip=/tmp/*,/var/tmp/*
 " Respect modeline in files
 set modeline
 set modelines=4
@@ -48,9 +46,9 @@ syntax on
 set cursorline
 " Make tabs as wide as two spaces
 set tabstop=2
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
+" Define“invisible” characters (but do not show by default)
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:␣
+set nolist
 " Highlight searches
 set hlsearch
 " Ignore case of searches
