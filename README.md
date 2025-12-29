@@ -46,13 +46,49 @@ If `~/.extra` exists, it will be sourced along with the other files. It can be u
 An example `~/.extra` file looks like this:
 
 ```bash
-# Git credentials
-GIT_AUTHOR_NAME="<full_name>"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="<email_address>"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
+# Git identity (environment)
+export GIT_AUTHOR_NAME="<full_name>"
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_AUTHOR_EMAIL="<email_address>"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+```
+
+Or, slightly more advanced:
+
+```bash
+# Git identity (environment)
+export GIT_AUTHOR_NAME="<your_full_name>"
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_AUTHOR_EMAIL="<your_email_address>"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+
+# Git identity (global config)
+_set_git_global_identity() {
+
+  # Only do work if git exists
+  command -v git >/dev/null 2>&1 || return 0
+
+  # Only write if needed (avoids .gitconfig lock races + reduces churn)
+  local cur_name cur_email
+  cur_name="$(git config --global --get user.name 2>/dev/null || true)"
+  cur_email="$(git config --global --get user.email 2>/dev/null || true)"
+
+  # Set git global identity if needed
+  [ "$cur_name"  = "$GIT_AUTHOR_NAME" ]  || git config --global user.name  "$GIT_AUTHOR_NAME"
+  [ "$cur_email" = "$GIT_AUTHOR_EMAIL" ] || git config --global user.email "$GIT_AUTHOR_EMAIL"
+
+}
+
+if command -v flock >/dev/null 2>&1; then
+  (
+    flock 9
+    _set_git_global_identity
+  ) 9>"$HOME/.gitconfig.startup.lock"
+else
+  _set_git_global_identity
+fi
+
+unset -f _set_git_global_identity
 ```
 
 One could also use `~/.extra` to override settings, functions and aliases from this dotfiles repository.
