@@ -170,28 +170,23 @@ function tre() {
 
 # Function to remove duplicate entries from PATH
 function cleanpath() {
-  if [ -n "$PATH" ]; then
-    OLD_PATH=$PATH:; PATH=
-    while [ -n "$OLD_PATH" ]; do
-      x=${OLD_PATH%%:*}
-      case $PATH: in
-        *:"$x":*) ;;
-        *) PATH=$PATH:$x;;
-      esac
-      OLD_PATH=${OLD_PATH#*:}
-    done
-    PATH=${PATH#:}
-    unset OLD_PATH x
-  fi
-}
-
-# Function to prepend a path to PATH variable
-function addpath() {
-  for x in $1; do
-    case ":$PATH:" in
-      *":$x:"*) :;;
-      *) PATH="$x:$PATH";;
+  local old_path=$PATH IFS=':' out=() p
+  for p in $old_path; do
+    [[ -z $p ]] && continue
+    case ":${out[*]}:" in
+      *":$p:"*) ;;
+      *) out+=("$p") ;;
     esac
   done
-  unset x
+  PATH=$(IFS=:; printf '%s' "${out[*]}")
+}
+
+# Function to prepend a path or paths to PATH variable
+function addpath() {
+  local p=$1
+  [ -n "$p" ] || return 0
+  case ":$PATH:" in
+    *":$p:"*) return 0 ;;
+    *) PATH="$p${PATH:+":$PATH"}" ;;
+  esac
 }
