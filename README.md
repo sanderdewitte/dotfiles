@@ -79,6 +79,8 @@ _set_git_global_identity() {
 
 }
 
+# Serialize global git config updates with flock
+# to prevent concurrent updates during shell startups
 if command -v flock >/dev/null 2>&1; then
   (
     flock 9
@@ -88,6 +90,7 @@ else
   _set_git_global_identity
 fi
 
+# Clean up helper function
 unset -f _set_git_global_identity
 ```
 
