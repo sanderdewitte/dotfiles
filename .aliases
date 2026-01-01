@@ -51,7 +51,7 @@ alias sudo='sudo '
 alias week='date +%V'
 
 # Get Debian package updates, Flatpack updates and Cinnamon themes/icons/applets updates
-alias update='(command -v apt >/dev/null 2>&1 && sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean); (command -v flatpak >/dev/null 2>&1 && flatpak update -y && flatpak uninstall --unused -y); (command -v cinnamon-spice-updater >/dev/null 2>&1 && cinnamon-spice-updater)'
+alias update='(command -v apt >/dev/null 2>&1 && sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean); (command -v flatpak >/dev/null 2>&1 && flatpak update -y && flatpak uninstall --unused -y); (command -v cinnamon-spice-updater >/dev/null 2>&1 && cinnamon-spice-updater --update-all)'
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
