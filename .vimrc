@@ -1,8 +1,16 @@
-" Use the Solarized Dark theme
+" Basic UI intent ('light' or 'dark')
 set background=dark
+" Enable truecolor where available
+if has("termguicolors")
+  set termguicolors
+endif
+" Solarized options (must come BEFORE colorscheme) ---
+let g:solarized_contrast    = "normal"
+let g:solarized_visibility  = "normal"
+let g:solarized_termtrans   = 1
+let g:solarized_termcolors  = 256
+" Load Solarized colorscheme
 colorscheme solarized
-let g:solarized_termtrans=1
-
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
