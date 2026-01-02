@@ -47,6 +47,12 @@ alias egrep='egrep --color=auto'
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+# Print current shell + version
+alias whoshell='echo "$SHELL"; $SHELL --version 2>/dev/null | head -n 1'
+
+# Get current date and time
+alias now='date +"%Y-%m-%d %H:%M:%S"'
+
 # Get week number
 alias week='date +%V'
 
@@ -60,7 +66,7 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 command -v hd > /dev/null || alias hd="hexdump -C"
 
 # URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlencode='python3 -c "import sys, urllib.parse as u; print(u.quote_plus(sys.argv[1]))"'
 
 # Merge PDF files, preserving hyperlinks
 # Usage: `mergepdf input{1,2,3}.pdf`
