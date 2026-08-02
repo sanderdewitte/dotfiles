@@ -50,8 +50,8 @@ set secure
 set number
 " Enable syntax highlighting
 syntax on
-" Highlight current line
-set cursorline
+" Do not highlight current line
+set nocursorline
 " Make tabs as wide as two spaces
 set tabstop=2
 " Define“invisible” characters (but do not show by default)
